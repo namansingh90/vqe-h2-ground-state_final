@@ -73,12 +73,6 @@ Install using:
 pip install -r requirements.txt
 ```
 
----
-
-##  Team
-
-* Person 1: Hamiltonian + ansatz
-* Person 2: VQE execution + results
 
 ---
 
