@@ -39,7 +39,7 @@ vqe-h2-ground-state/
 
 ```bash
 git clone <repo-url>
-cd vqe-h2-ground-state
+cd vqe-h2-ground-state_final
 pip install -r requirements.txt
 ```
 
