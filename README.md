@@ -1,81 +1,121 @@
-# VQE for H₂ Molecule Ground State
+# Variational Quantum Eigensolver (VQE) for H₂ Ground State Energy
 
-##  Overview
+A quantum computing project that uses the Variational Quantum Eigensolver (VQE) algorithm to estimate the ground state energy of the Hydrogen (H₂) molecule across different bond lengths.
 
-This project implements the Variational Quantum Eigensolver (VQE) algorithm to compute the ground state energy of the hydrogen (H₂) molecule using a hybrid quantum-classical approach.
+The project is implemented using Qiskit, Qiskit Nature, PySCF, NumPy, SciPy, and Matplotlib.
 
----
+## Features
 
-##  Objective
+- Generation of molecular Hamiltonian using PySCF
+- Jordan-Wigner mapping from fermionic to qubit operators
+- Custom 4-qubit parameterized ansatz
+- COBYLA-based variational optimization
+- Warm-start optimization for faster convergence
+- Ground state energy estimation across multiple bond lengths
+- Energy vs Bond Length visualization
+- VQE convergence analysis
 
-* Compute ground state energy of H₂ molecule
-* Use a parameterized quantum circuit (ansatz)
-* Optimize using a classical optimizer
-* Evaluate energy at different bond lengths
-
----
-
-##  Project Structure
+## Repository Structure
 
 ```
-vqe-h2-ground-state/
-│── code/
+vqe-h2-ground-state_final/
+│
+├── code/
 │   ├── ansatz.py
 │   ├── hamiltonian.py
 │   ├── setup.py
-│   ├── vqe_main.py
+│   └── vqe_main.py
 │
-│── report/
-│── presentation/
-│── project_results/
-│── bond_length_data.json
-│── requirements.txt
-│── README.md
+├── outputs/
+│   ├── bond_length_comparison.png
+│   ├── bond_length_plot.png
+│   ├── convergence_plot_new.png
+│   └── vqe_energy_plot_new.png
+│
+├── project_results/
+│   └── plot_results.py
+│
+├── Intro/
+│   └── Simulation of Ground State Energy of H.pdf
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
----
+## Installation
 
-##  Installation
+Clone the repository:
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/namansingh90/vqe-h2-ground-state_final.git
 cd vqe-h2-ground-state_final
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
----
+## Running the Project
 
-##  Run the Project
+Execute the main VQE simulation:
 
 ```bash
 python code/vqe_main.py
 ```
 
----
+This will:
 
-##  Output
-pictures:
-* Ground state energy of H₂
-* Results for different bond lengths
+- Generate the H₂ molecular Hamiltonian
+- Run VQE optimization for different bond lengths
+- Store energy values
+- Save convergence history
 
----
-
-##  Requirements
-
-* qiskit
-* numpy
-* scipy
-* matplotlib (if used)
-
-Install using:
+Generate plots:
 
 ```bash
-pip install -r requirements.txt
+python project_results/plot_results.py
 ```
 
+## Outputs
 
----
+The project generates:
 
-##  Note
+### Energy vs Bond Length Curve
 
-This is an academic project implementing basic VQE for learning purposes.
+Shows how the molecular ground state energy varies with internuclear separation and identifies the equilibrium bond length.
+
+### Convergence Plot
+
+Shows the optimization trajectory of the VQE algorithm and demonstrates convergence toward the minimum energy solution.
+
+All generated plots can be found in the `outputs/` directory.
+
+## Documentation
+
+A detailed explanation of the theory, implementation, workflow, challenges, and future scope is available in:
+
+```
+Intro/Simulation of Ground State Energy of H.pdf
+```
+
+## Technologies Used
+
+- Python
+- Qiskit
+- Qiskit Nature
+- PySCF
+- NumPy
+- SciPy
+- Matplotlib
+
+## Authors
+
+- Naman Singh
+- Project Team Members
+
+## License
+
+This project is intended for educational and research purposes.
