@@ -1,0 +1,7 @@
+qiskit
+qiskit-aer
+qiskit-nature
+# pyscf==2.3.0
+numpy
+scipy
+matplotlib
