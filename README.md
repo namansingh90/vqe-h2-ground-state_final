@@ -1,105 +1,223 @@
-# Variational Quantum Eigensolver (VQE) for H₂ Ground State Energy
+# Variational Quantum Eigensolver (VQE) for H₂ Ground State Energy Simulation
 
-A quantum computing project that uses the Variational Quantum Eigensolver (VQE) algorithm to estimate the ground state energy of the Hydrogen (H₂) molecule across different bond lengths.
+## Overview
 
-The project is implemented using Qiskit, Qiskit Nature, PySCF, NumPy, SciPy, and Matplotlib.
+This project implements the **Variational Quantum Eigensolver (VQE)** algorithm to estimate the **ground state energy of the Hydrogen molecule (H₂)** using quantum simulation techniques. The implementation combines quantum circuit optimization with classical optimization methods to study how the molecular energy changes with bond length.
+
+The project uses **Qiskit**, **Qiskit Nature**, and **PySCF** to generate the molecular Hamiltonian, map it to qubits, and perform variational optimization.
+
+---
+
+## Project Objectives
+
+- Simulate the ground state energy of the H₂ molecule.
+- Construct molecular Hamiltonians for different bond lengths.
+- Apply Jordan-Wigner transformation to obtain qubit Hamiltonians.
+- Design a parameterized quantum ansatz circuit.
+- Optimize variational parameters using COBYLA.
+- Generate the molecular potential energy curve.
+- Analyze VQE convergence behavior.
+
+---
 
 ## Features
 
-- Generation of molecular Hamiltonian using PySCF
-- Jordan-Wigner mapping from fermionic to qubit operators
-- Custom 4-qubit parameterized ansatz
-- COBYLA-based variational optimization
-- Warm-start optimization for faster convergence
-- Ground state energy estimation across multiple bond lengths
-- Energy vs Bond Length visualization
-- VQE convergence analysis
+- Molecular Hamiltonian generation using PySCF
+- Jordan-Wigner fermion-to-qubit mapping
+- Custom 4-qubit variational ansatz
+- Two-layer parameterized circuit architecture
+- COBYLA optimization
+- Warm-start parameter initialization
+- Energy vs Bond Length analysis
+- VQE convergence visualization
+- Fully modular code structure
+
+---
 
 ## Repository Structure
 
-```
-vqe-h2-ground-state_final/
+```text
+vqe-h2-ground-state/
 │
-├── code/
+├── 1.Intro/
+│   └── Simulation of Ground State Energy of H.pdf
+│
+├── 2.code/
 │   ├── ansatz.py
 │   ├── hamiltonian.py
 │   ├── setup.py
 │   └── vqe_main.py
 │
-├── outputs/
+├── 3.project_results/
+│   └── plot_results.py
+│
+├── 4.outputs/
 │   ├── bond_length_comparison.png
 │   ├── bond_length_plot.png
 │   ├── convergence_plot_new.png
 │   └── vqe_energy_plot_new.png
 │
-├── project_results/
-│   └── plot_results.py
-│
-├── Intro/
-│   └── Simulation of Ground State Energy of H.pdf
-│
+├── bond_length_data.json
+├── energy_history.json
 ├── requirements.txt
 ├── README.md
-└── .gitignore
+├── .gitignore
+│
+├── vqe-env/
+│   └── Python virtual environment
+│
+└── .git/
 ```
+
+---
 
 ## Installation
 
-Clone the repository:
+### Clone the Repository
 
 ```bash
 git clone https://github.com/namansingh90/vqe-h2-ground-state_final.git
 cd vqe-h2-ground-state_final
 ```
 
-Install dependencies:
+### Create Virtual Environment
+
+```bash
+python3 -m venv vqe-env
+source vqe-env/bin/activate
+```
+
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
+---
+
 ## Running the Project
 
-Execute the main VQE simulation:
+### Step 1: Run VQE Simulation
 
 ```bash
-python code/vqe_main.py
+python 2.code/vqe_main.py
 ```
 
-This will:
+This script:
 
-- Generate the H₂ molecular Hamiltonian
-- Run VQE optimization for different bond lengths
-- Store energy values
-- Save convergence history
+- Generates the H₂ Hamiltonian
+- Performs VQE optimization
+- Computes energies for multiple bond lengths
+- Stores energy values
+- Stores optimization history
 
-Generate plots:
+Generated files:
+
+```text
+bond_length_data.json
+energy_history.json
+```
+
+---
+
+### Step 2: Generate Plots
 
 ```bash
-python project_results/plot_results.py
+python 3.project_results/plot_results.py
 ```
 
-## Outputs
+This generates:
 
-The project generates:
+```text
+bond_length_comparison.png
+bond_length_plot.png
+convergence_plot_new.png
+vqe_energy_plot_new.png
+```
+
+All plots are stored in:
+
+```text
+4.outputs/
+```
+
+---
+
+## Results
 
 ### Energy vs Bond Length Curve
 
-Shows how the molecular ground state energy varies with internuclear separation and identifies the equilibrium bond length.
+The project computes the ground state energy for bond lengths ranging from:
 
-### Convergence Plot
+```text
+0.5 Å to 3.5 Å
+```
 
-Shows the optimization trajectory of the VQE algorithm and demonstrates convergence toward the minimum energy solution.
+The resulting curve represents the potential energy surface of the Hydrogen molecule.
 
-All generated plots can be found in the `outputs/` directory.
+The minimum point on the curve corresponds to the equilibrium bond length.
+
+---
+
+### Convergence Analysis
+
+The convergence plot shows:
+
+- Optimization iteration number
+- Estimated energy value
+
+This demonstrates how the VQE algorithm converges toward the minimum energy solution during optimization.
+
+---
+
+## Implementation Highlights
+
+### Hamiltonian Generation
+
+- PySCF Driver
+- STO-3G Basis Set
+- Second Quantized Molecular Hamiltonian
+
+### Qubit Mapping
+
+- Jordan-Wigner Transformation
+
+### Quantum Circuit
+
+- 4 Qubits
+- 8 Trainable Parameters
+- Two RY Rotation Layers
+- CNOT Entanglement Layer
+
+### Optimization
+
+- COBYLA Optimizer
+- Warm Start Strategy
+- Statevector Simulation
+
+---
 
 ## Documentation
 
-A detailed explanation of the theory, implementation, workflow, challenges, and future scope is available in:
+A complete report containing:
 
+- Quantum Computing Fundamentals
+- Variational Quantum Eigensolver Theory
+- Hamiltonian Construction
+- Ansatz Design
+- Workflow Explanation
+- Mathematical Background
+- Challenges Encountered
+- Scalability Discussion
+- Future Improvements
+
+is available in:
+
+```text
+1.Intro/Simulation of Ground State Energy of H.pdf
 ```
-Intro/Simulation of Ground State Energy of H.pdf
-```
+
+---
 
 ## Technologies Used
 
@@ -111,11 +229,30 @@ Intro/Simulation of Ground State Energy of H.pdf
 - SciPy
 - Matplotlib
 
+---
+
+## Future Improvements
+
+Possible extensions of this work include:
+
+- UCCSD Ansatz
+- Hardware Execution on IBM Quantum Devices
+- Error Mitigation Techniques
+- ADAPT-VQE
+- Larger Molecules (LiH, BeH₂, H₂O)
+- Noise-Aware Simulations
+- Quantum Hardware Benchmarking
+
+---
+
 ## Authors
 
-- Naman Singh
-- Project Team Members
+**Naman Singh**
+
+Quantum Computing and Quantum Chemistry Simulation Project
+
+---
 
 ## License
 
-This project is intended for educational and research purposes.
+This project is intended for educational, academic, and research purposes.
